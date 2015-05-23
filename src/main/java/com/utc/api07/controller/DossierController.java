@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.HtmlUtils;
 
 import com.utc.api07.model.Dossier;
 import com.utc.api07.model.User;
@@ -117,11 +118,11 @@ public class DossierController {
             	Dossier dossierTmp = dossierService.getById(d.getIdDossier());
             	
             	if (d.getAntecedents() != null && d.getAntecedents() != null)  {
-                	dossierTmp.setAntecedents(d.getAntecedents());
-                	dossierTmp.setVaccinations(d.getAntecedents());	
+                	dossierTmp.setAntecedents(HtmlUtils.htmlEscape(d.getAntecedents()));
+                	dossierTmp.setVaccinations(HtmlUtils.htmlEscape(d.getAntecedents()));	
             	} else if (d.getCoordonnees() != null && d.getEtatCivil() != null){
-            		dossierTmp.setCoordonnees(d.getCoordonnees());
-            		dossierTmp.setEtatCivil(d.getEtatCivil());
+            		dossierTmp.setCoordonnees(HtmlUtils.htmlEscape(d.getCoordonnees()));
+            		dossierTmp.setEtatCivil(HtmlUtils.htmlEscape(d.getEtatCivil()));
             		dossierTmp.setFkUser(userService.getById(d.getIdUser()));
             	}
                 model.addObject("msg", MSG_EDIT_DOSSIER);
@@ -157,11 +158,11 @@ public class DossierController {
             	Dossier dossierTmp = dossierService.getById(d.getIdDossier());
             	
             	if (d.getAntecedents() != null && d.getAntecedents() != null)  {
-                	dossierTmp.setAntecedents(d.getAntecedents());
-                	dossierTmp.setVaccinations(d.getAntecedents());	
+                	dossierTmp.setAntecedents(HtmlUtils.htmlEscape(d.getAntecedents()));
+                	dossierTmp.setVaccinations(HtmlUtils.htmlEscape(d.getAntecedents()));	
             	} else if (d.getCoordonnees() != null && d.getEtatCivil() != null){
-            		dossierTmp.setCoordonnees(d.getCoordonnees());
-            		dossierTmp.setEtatCivil(d.getEtatCivil());
+            		dossierTmp.setCoordonnees(HtmlUtils.htmlEscape(d.getCoordonnees()));
+            		dossierTmp.setEtatCivil(HtmlUtils.htmlEscape(d.getEtatCivil()));
             	}
 
                 model.addObject("msg", MSG_EDIT_DOSSIER);
